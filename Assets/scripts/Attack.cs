@@ -3,11 +3,13 @@ using System.Collections;
 
 public class Attack : MonoBehaviour {
 	
-	public float timeBetweenAttacks = 0.5f;
+	public float timeBetweenAttacks = 1.0f;
+	public float timeSwordIsOut = 0.5f;
 	public GameObject sword;
 	public float swordYPosition;
 	public float swordXPosition;
 
+	private GameObject shootingSword;
 	private GameObject visibleSword;
 	private float timestamp;
 	// Use this for initialization
@@ -17,19 +19,18 @@ public class Attack : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-		if (Time.time >= timestamp)
-		{
-			Destroy (visibleSword);
-
-			if (Input.GetKeyDown(KeyCode.Space)) {
-				Vector3 pos = transform.position;
-				pos.x += swordXPosition;
-				pos.y += swordYPosition;
-				visibleSword = Instantiate(sword, pos, transform.rotation) as GameObject;
-				visibleSword.transform.parent = gameObject.transform;
-				timestamp = Time.time + timeBetweenAttacks;
+		if (Time.time >= timestamp && Input.GetKeyDown(KeyCode.Space)) {
+			Vector3 pos = transform.position;
+			pos.x += swordXPosition;
+			pos.y += swordYPosition;
+			visibleSword = Instantiate(sword, pos, transform.rotation) as GameObject;
+			if(shootingSword == null) {
+				shootingSword = visibleSword;
+				shootingSword.GetComponent<Sword>().isShooting = true;
+//				visibleSword = null;
 			}
+			visibleSword.transform.parent = gameObject.transform;
+			timestamp = Time.time + timeBetweenAttacks;
 		}
 	}
 }

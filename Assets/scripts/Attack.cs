@@ -27,6 +27,7 @@ public class Attack : MonoBehaviour {
 				pos.x += swordXPosition;
 				pos.y += swordYPosition;
 				visibleSword = Instantiate(sword, pos, transform.rotation) as GameObject;
+				visibleSword.transform.parent = gameObject.transform;
 				timestamp = Time.time + timeBetweenAttacks;
 			}
 		}

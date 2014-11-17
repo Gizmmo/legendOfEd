@@ -22,7 +22,6 @@ public class EnemyMovement : MonoBehaviour {
 	}
 
 	void moveRandom () {
-		Debug.Log("in move random");
 		bool moveX = Random.Range (0, 2) == 0 ? true: false;
 		int randomX = 0;
 		int randomY = 0;

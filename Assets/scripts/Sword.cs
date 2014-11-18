@@ -47,7 +47,7 @@ public class Sword : MonoBehaviour {
 	}
 
 	void Explode() {
-		//Enter effects in here later
+		//Enter effects in here later!
 		DestroySword();
 	}
 

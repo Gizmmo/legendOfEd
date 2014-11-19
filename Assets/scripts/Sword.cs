@@ -27,6 +27,7 @@ public class Sword : MonoBehaviour {
 		
 	}
 
+	//property for isShooting
 	public bool isShooting {
 		get {
 			return _isShooting;

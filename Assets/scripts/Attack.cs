@@ -26,10 +26,10 @@ public class Attack : MonoBehaviour {
 			visibleSword = Instantiate(sword, pos, transform.rotation) as GameObject;
 			if(shootingSword == null) {
 				shootingSword = visibleSword;
-				shootingSword.GetComponent<Sword>().isShooting = true;
-//				visibleSword = null;
+				shootingSword.GetComponent<Sword>().shootSword();
+			} else {
+				visibleSword.transform.parent = gameObject.transform;
 			}
-			visibleSword.transform.parent = gameObject.transform;
 			timestamp = Time.time + timeBetweenAttacks;
 		}
 	}

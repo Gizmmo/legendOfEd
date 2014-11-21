@@ -12,9 +12,11 @@ public class Attack : MonoBehaviour {
 	private GameObject shootingSword;
 	private GameObject visibleSword;
 	private float timestamp;
+	private Player playerScript;
+
 	// Use this for initialization
 	void Start () {
-	
+		playerScript = gameObject.GetComponent<Player>();
 	}
 	
 	// Update is called once per frame
@@ -24,7 +26,7 @@ public class Attack : MonoBehaviour {
 			pos.x += swordXPosition;
 			pos.y += swordYPosition;
 			visibleSword = Instantiate(sword, pos, transform.rotation) as GameObject;
-			if(shootingSword == null) {
+			if(playerScript.isFullHealth() && shootingSword == null) {
 				shootingSword = visibleSword;
 				shootingSword.GetComponent<Sword>().shootSword();
 			} else {

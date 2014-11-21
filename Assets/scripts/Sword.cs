@@ -64,7 +64,6 @@ public class Sword : MonoBehaviour {
 	}
 
 	void DestroySword() {
-		print ("Sword Destroyed");
 		Destroy(gameObject);
 	}
 
